@@ -1,18 +1,16 @@
-
+import os
 from aiogram import Bot, Dispatcher, types, executor
 from aiogram.types import InputFile
 
-# ✅ التوكن مدمج مباشرة داخل الكود (مؤقتًا للاختبار)
-API_TOKEN = "7976144019:AAGT7MnmvHsMgaUvRrdWP9drYjK-gS8bh_c"
+# ✅ التوكن من متغير بيئة لحماية البوت
+API_TOKEN = os.getenv("7976144019:AAFA1MNhvg4gL8IQqgxQu8DGViW_ky5QyyY")
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
 @dp.message_handler(commands=["start"])
 async def send_welcome(message: types.Message):
-    await message.reply("👋 Welcome to AI Resume Pro!
-
-Send me your info (name, job title, experience) and I’ll generate your CV.")
+    await message.reply("👋 Welcome to AI Resume Pro!\n\nSend me your info (name, job title, experience) and I’ll generate your CV.")
 
 @dp.message_handler()
 async def generate_cv(message: types.Message):
